@@ -1,40 +1,24 @@
 import * as React from 'react';
-import Sample from './Sample';
 
 export interface AppProps {
 
 }
 
-export interface AppState {
-}
+const App: React.SFC<AppProps> = (props) => {
+  const searchRef = React.useRef<HTMLInputElement>(null);
 
-class App extends React.Component<AppProps, AppState> {
-  private searchRef: React.RefObject<HTMLInputElement>;
-
-  constructor(props: AppProps) {
-    super(props);
-    this.searchRef = React.createRef();
-  }
-
-  componentDidMount() {
-    if (this.searchRef.current) {
-      this.searchRef.current.value = 'Good to see you here!';
+  const autofill = () => {
+    if (searchRef.current) {
+      searchRef.current.value = 'Good to see you!';
     }
   }
 
-
-  render() {
-    return (
-      <>
-        <div className='container'>
-          <h3>Learning Refs</h3>
-          <hr />
-          {/* Refs cannot be used with functional components */}
-          <Sample ref={this.searchRef} />
-        </div>
-      </>
-    );
-  }
+  return (<>
+    <div className='container p-3'>
+      <input type="text" className='form-control' ref={searchRef} />
+      <button className='btn btn-primary mt-2' onClick={autofill}>Autofill</button>
+    </div>
+  </>);
 }
 
 export default App;
