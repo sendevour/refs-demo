@@ -9,7 +9,7 @@ export interface AppState {
 }
 
 class App extends React.Component<AppProps, AppState> {
-  private searchRef: React.RefObject<Sample>;
+  private searchRef: React.RefObject<HTMLInputElement>;
 
   constructor(props: AppProps) {
     super(props);
@@ -17,7 +17,9 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    this.searchRef.current?.autofillSearchTerm();
+    if (this.searchRef.current) {
+      this.searchRef.current.value = 'Good to see you here!';
+    }
   }
 
 
