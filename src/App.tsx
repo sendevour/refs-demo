@@ -1,22 +1,23 @@
 import * as React from 'react';
+import Sample from './Sample';
 
-export interface Props {
+export interface AppProps {
 
 }
 
-export interface State {
+export interface AppState {
 }
 
-class App extends React.Component<Props, State> {
-  private searchRef: React.RefObject<HTMLInputElement>;
+class App extends React.Component<AppProps, AppState> {
+  private searchRef: React.RefObject<Sample>;
 
-  constructor(props: Props) {
+  constructor(props: AppProps) {
     super(props);
     this.searchRef = React.createRef();
   }
 
   componentDidMount() {
-    this.searchRef.current?.focus();
+    this.searchRef.current?.autofillSearchTerm();
   }
 
 
@@ -26,7 +27,7 @@ class App extends React.Component<Props, State> {
         <div className='container'>
           <h3>Learning Refs</h3>
           <hr />
-          <input type="text" className='form-control' ref={this.searchRef} />
+          <Sample ref={this.searchRef} />
         </div>
       </>
     );
