@@ -27,6 +27,7 @@ class App extends React.Component<AppProps, AppState> {
         <div className='container'>
           <h3>Learning Refs</h3>
           <hr />
+          {/* Refs cannot be used with functional components */}
           <Sample ref={this.searchRef} />
         </div>
       </>
